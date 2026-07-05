@@ -22,8 +22,8 @@
 - Entwickler: Robert Meyer, Deutschland
 
 ## Seiten
-- Startseite: https://verstehen.de/
-- Support: https://verstehen.de/support.html
-- EULA: https://verstehen.de/eula.html
-- Datenschutz: https://verstehen.de/datenschutz.html
-- Impressum: https://verstehen.de/impressum.html
+- Startseite: https://verstehen-app.de/
+- Support: https://verstehen-app.de/support.html
+- EULA: https://verstehen-app.de/eula.html
+- Datenschutz: https://verstehen-app.de/datenschutz.html
+- Impressum: https://verstehen-app.de/impressum.html
