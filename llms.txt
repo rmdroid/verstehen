@@ -1,0 +1,29 @@
+# Verstehen
+
+> Lern-App für iPhone und iPad, die sich merkt, was der Nutzer kann, was er gelernt hat und wie er am besten versteht. Die KI läuft vollständig lokal über Apple Intelligence — kein Konto, keine Server, keine Datenübertragung. Claim: „ChatGPT vergisst dich nach jedem Gespräch. Verstehen nicht."
+
+## Was die App macht
+- Persönlicher KI-Lerncoach mit vier wissenschaftlich fundierten Methoden: Sokratische Fragen (Testing-Effekt, Roediger & Karpicke 2006), Rückerklärung (Feynman-Methode), Multi-Level-Erklärung (Elaboration), Bloom-Lernreise (Bloom-Taxonomie).
+- Drei Gedächtnisse nach dem Vorbild der Hirnforschung: Lernjournal (episodisch — was passiert ist), Wissenslandkarte (semantisch — was der Nutzer kann, als wachsendes Konzeptnetz), Lernprofil (metakognitiv — wie der Nutzer am besten lernt).
+- „Nächster sinnvoller Schritt": Die App schlägt anhand der Landkarte vor, was als Nächstes gelernt werden sollte — Konzepte, deren Voraussetzungen bereits sitzen.
+- Eigenes Material: PDF-, Text- und Markdown-Import; Dokumente werden lokal aufbereitet und als fachliche Grundlage der Session genutzt (lokales RAG).
+- Belohnungen ohne Gamification-Druck: Konzepte werden zu Sternen, gefestigte Themen zu Sternbildern; Meilensteine nach Lernforschern benannt (Feynman-Moment, Ebbinghaus-Moment, Bloom-Gipfel); Wochenrhythmus statt Streak.
+- Export: Lernjournal als Markdown mit [[Wikilinks]] (Obsidian-kompatibel), Gesamtdaten als JSON.
+- Siri/Shortcuts: Session starten, nächsten Schritt abfragen, letzte Session zusammenfassen.
+
+## Datenschutz
+- Verarbeitung zu 100 % on-device über das Apple-Intelligence-Modell. 0 externe Übertragungen, kein Konto, keine Telemetrie, keine Server.
+
+## Eckdaten
+- Plattform: iOS/iPadOS (iPhone 15 Pro oder neuer, iPads mit M-Chip, Apple Intelligence erforderlich)
+- Sprachen: Deutsch, Englisch
+- Preis: Einmalkauf, kein Abo
+- Vertrieb: Apple App Store
+- Entwickler: Robert Meyer, Deutschland
+
+## Seiten
+- Startseite: https://verstehen.de/
+- Support: https://verstehen.de/support.html
+- EULA: https://verstehen.de/eula.html
+- Datenschutz: https://verstehen.de/datenschutz.html
+- Impressum: https://verstehen.de/impressum.html
