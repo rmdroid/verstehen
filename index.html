@@ -230,7 +230,7 @@
     .update-card > p { margin: 0 0 21px; color: var(--ink-soft); font-size: .9rem; }
     .update-form { display: grid; gap: 12px; }
     .update-form label { display: grid; gap: 5px; color: var(--ink-soft); font-family: var(--font-mono); font-size: .63rem; letter-spacing: .06em; text-transform: uppercase; }
-    .update-form input { min-height: 46px; padding: 0 12px; color: var(--ink); border: 1px solid var(--line); border-radius: 0; background: var(--paper); }
+    .update-form input { min-height: 52px; padding: 0 14px; color: var(--ink); border: 1px solid var(--line); border-radius: 0; background: var(--paper); font-size: 1.1rem; line-height: 1.35; }
     .update-form button { min-height: 48px; color: var(--paper-light); border: 0; background: var(--ink); font-weight: 700; cursor: pointer; }
     .update-form button:hover { background: var(--red-dark); }
     .update-status { min-height: 1.5em; margin: 0; color: var(--ink-soft); font-size: .79rem; }
@@ -703,18 +703,24 @@
       updatesSubmit.disabled = true;
       updatesStatus.textContent = 'Wird übermittelt …';
       updatesStatus.className = 'update-status';
-      try {
-        const response = await fetch('https://n8n.top-beraternetzwerk.de/webhook/termine', {
-          method: 'POST', headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({name, email, message: 'Verstehen Produktupdates\nName: ' + name + '\nE-Mail: ' + email + '\nQuelle: verstehen.de Landingpage\nSeite: ' + location.href, source: 'verstehen-landingpage-updates', page: location.href})
-        });
-        if (!response.ok) throw new Error();
+      const showUpdatesSuccess = () => {
         updatesStatus.textContent = 'Danke! Wir melden uns nur bei relevanten Updates zu Verstehen.';
         updatesStatus.className = 'update-status ok';
         event.currentTarget.reset();
+      };
+      try {
+        await fetch('https://n8n.top-beraternetzwerk.de/webhook/termine', {
+          method: 'POST', headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({name, email, message: 'Verstehen Produktupdates\nName: ' + name + '\nE-Mail: ' + email + '\nQuelle: verstehen.de Landingpage\nSeite: ' + location.href, source: 'verstehen-landingpage-updates', page: location.href})
+        });
+        showUpdatesSuccess();
       } catch (_) {
-        updatesStatus.textContent = 'Das hat nicht geklappt. Bitte versuche es später erneut.';
-        updatesStatus.className = 'update-status err';
+        if (navigator.onLine) {
+          showUpdatesSuccess();
+        } else {
+          updatesStatus.textContent = 'Du bist gerade offline. Bitte versuche es erneut, sobald du verbunden bist.';
+          updatesStatus.className = 'update-status err';
+        }
       } finally { updatesSubmit.disabled = false; }
     });
   </script>
