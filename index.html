@@ -3,22 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Verstehen — Ein Gedächtnis für dein Lernen</title>
-  <meta name="description" content="Verstehen ist dein persönliches Lern-Gedächtnis für iPhone und iPad. Lokal auf deinem Gerät, ohne Konto und ohne Abo.">
+  <title>Verstehen – private KI-Lernapp für iPhone und iPad</title>
+  <meta name="description" content="Lerne mit eigenen PDFs und Apple Intelligence. Verstehen behält Lernstand, offene Fragen und Lernwege lokal auf deinem Gerät – ohne Konto und Abo.">
   <link rel="canonical" href="https://verstehen-app.de/">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#f6f1e8">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Verstehen">
-  <meta property="og:title" content="Verstehen — Ein Gedächtnis für dein Lernen">
-  <meta property="og:description" content="Eine Lern-App, die sich merkt, was du verstanden hast — vollständig auf deinem iPhone oder iPad.">
+  <meta property="og:title" content="Verstehen – private KI-Lernapp für iPhone und iPad">
+  <meta property="og:description" content="Lerne mit eigenen PDFs. Verstehen behält Lernstand, offene Fragen und Lernwege lokal auf deinem Gerät.">
   <meta property="og:url" content="https://verstehen-app.de/">
   <meta property="og:image" content="https://verstehen-app.de/verstehen-og.jpg">
   <meta property="og:locale" content="de_DE">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts.css">
   <script src="https://analyse.ki-notch.de/api/script.js" data-site-id="8475d57c6e8d" defer></script>
   <script type="application/ld+json">
   {
@@ -27,7 +25,9 @@
     "name": "Verstehen",
     "operatingSystem": "iOS, iPadOS",
     "applicationCategory": "EducationalApplication",
-    "description": "Privates Lern-Gedächtnis mit Apple Intelligence: sokratischer Lerncoach, Wissenslandkarte und Lernprofil — vollständig on-device.",
+    "description": "Private KI-Lernapp mit Apple Intelligence: mit eigenen PDFs lernen, offene Fragen behalten und einen persönlichen Lernpfad aufbauen — vollständig on-device.",
+    "image": "https://verstehen-app.de/verstehen-og.jpg",
+    "downloadUrl": "https://apps.apple.com/de/app/verstehen-lern-ged%C3%A4chtnis/id6787693752",
     "offers": {"@type":"Offer","price":"9.99","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://apps.apple.com/de/app/verstehen-lern-ged%C3%A4chtnis/id6787693752"},
     "author": {"@type":"Person","name":"Robert Meyer"},
     "inLanguage": ["de", "en"]
@@ -81,7 +81,7 @@
     .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 54px 8% 44px 0; }
     .kicker { margin: 0 0 21px; color: var(--red); font-family: var(--font-mono); font-size: .69rem; font-weight: 500; letter-spacing: .105em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 9.5ch; margin-bottom: 25px; font-family: var(--font-display); font-size: clamp(3.35rem, 5.65vw, 5.1rem); font-weight: 500; letter-spacing: -.062em; line-height: .91; }
+    h1 { max-width: 11ch; margin-bottom: 25px; font-family: var(--font-display); font-size: clamp(3.15rem, 5.25vw, 4.85rem); font-weight: 500; letter-spacing: -.062em; line-height: .93; }
     h1 em { color: var(--red); font-style: italic; }
     .hero-lede { max-width: 49ch; margin-bottom: 31px; color: var(--ink-soft); font-family: var(--font-display); font-size: clamp(1.16rem, 1.5vw, 1.42rem); line-height: 1.43; }
     .action-row { display: flex; flex-wrap: wrap; align-items: center; gap: 15px; }
@@ -89,7 +89,9 @@
     .store-link:hover { background: var(--red-dark); transform: translateY(-2px); }
     .store-link svg { width: 17px; height: 21px; }
     .quiet-link { color: var(--ink-soft); font-size: .82rem; font-weight: 700; text-decoration-color: var(--red); text-decoration-thickness: 1px; text-underline-offset: 4px; }
-    .hero-note { margin: 16px 0 0; color: var(--ink-soft); font-family: var(--font-mono); font-size: .67rem; }
+    .hero-note { margin: 16px 0 0; color: var(--ink-soft); font-family: var(--font-mono); font-size: .72rem; line-height: 1.55; }
+    .hero-note span { display: block; }
+    .hero-requirement { margin-top: 5px; color: color-mix(in srgb, var(--ink-soft) 84%, transparent); }
     .hero-visual { position: relative; min-height: 640px; display: flex; align-items: flex-end; justify-content: center; padding: 28px 32px 0; border-left: 1px solid var(--line); }
     .device { position: relative; z-index: 1; width: min(295px, 83%); padding: 9px; background: #1e201e; border: 1px solid #111; border-radius: 42px 42px 0 0; box-shadow: 15px 17px 0 color-mix(in srgb, var(--ink) 12%, transparent), 0 17px 40px rgba(30, 27, 20, .19); }
     .device-screen { position: relative; aspect-ratio: 1206 / 2622; overflow: hidden; border-radius: 34px 34px 0 0; background: #263987; }
@@ -107,6 +109,40 @@
     .fact:last-child { border-right: 0; }
     .fact-number { display: block; margin-bottom: 6px; color: var(--red); font-family: var(--font-mono); font-size: .68rem; }
     .fact p { margin: 0; font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; letter-spacing: -.015em; line-height: 1.15; }
+
+    /* Konkreter Lernablauf */
+    .workflow { background: var(--paper-light); border-bottom: 1px solid var(--line); }
+    .workflow-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(44px, 8vw, 100px); align-items: center; }
+    .workflow-copy h2 { max-width: 12ch; margin: 0 0 25px; font-family: var(--font-display); font-size: clamp(2.7rem, 4.6vw, 4.6rem); font-weight: 500; letter-spacing: -.06em; line-height: .96; }
+    .workflow-copy > p { max-width: 48ch; margin-bottom: 34px; color: var(--ink-soft); font-family: var(--font-display); font-size: 1.2rem; line-height: 1.5; }
+    .workflow-steps { border-top: 1px solid var(--line); }
+    .workflow-step { display: grid; grid-template-columns: 38px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .workflow-step b { color: var(--red); font-family: var(--font-mono); font-size: .66rem; font-weight: 500; }
+    .workflow-step h3 { margin: -3px 0 3px; font-family: var(--font-display); font-size: 1.17rem; font-weight: 600; letter-spacing: -.02em; }
+    .workflow-step p { margin: 0; color: var(--ink-soft); font-size: .83rem; }
+    .document-visual { position: relative; min-height: 560px; overflow: hidden; border: 1px solid var(--line); background: var(--paper-deep); }
+    .document-visual::before { content: "DEIN MATERIAL"; position: absolute; top: 18px; left: 20px; color: var(--red); font-family: var(--font-mono); font-size: .58rem; letter-spacing: .08em; }
+    .file-card { position: absolute; z-index: 2; top: 74px; left: 28px; width: 57%; padding: 24px 22px; background: var(--paper-light); border: 1px solid var(--ink); box-shadow: 8px 9px 0 rgb(29 32 27 / .1); transform: rotate(-2deg); }
+    .file-type { display: inline-grid; place-items: center; width: 41px; height: 41px; margin-bottom: 21px; color: var(--paper-light); background: var(--red); font-family: var(--font-mono); font-size: .65rem; font-weight: 500; }
+    .file-card h3 { margin: 0 0 8px; font-family: var(--font-display); font-size: 1.38rem; line-height: 1.05; }
+    .file-card p { margin: 0; color: var(--ink-soft); font-size: .73rem; }
+    .source-tags { position: absolute; z-index: 3; top: 287px; left: 20px; display: flex; gap: 7px; }
+    .source-tags span { padding: 6px 9px; border: 1px solid var(--line); background: var(--paper); font-family: var(--font-mono); font-size: .55rem; }
+    .flow-arrow { position: absolute; z-index: 1; top: 214px; left: 48%; width: 31%; height: 2px; background: var(--red); transform: rotate(13deg); transform-origin: left center; }
+    .flow-arrow::after { content: ""; position: absolute; right: -2px; top: -4px; width: 8px; height: 8px; border-top: 2px solid var(--red); border-right: 2px solid var(--red); transform: rotate(45deg); }
+    .session-preview { position: absolute; right: 24px; bottom: -62px; width: 46%; padding: 7px; overflow: hidden; border: 1px solid #111; border-radius: 29px 29px 0 0; background: #1e201e; box-shadow: 11px 12px 0 rgb(29 32 27 / .12); }
+    .session-preview img { width: 100%; border-radius: 23px 23px 0 0; }
+    .visual-note { position: absolute; z-index: 4; right: 20px; top: 72px; width: 160px; padding: 12px 13px; color: var(--paper-light); background: var(--moss); font-family: var(--font-mono); font-size: .58rem; line-height: 1.45; }
+
+    /* Anwendungsfälle */
+    .use-cases { padding-top: 20px; }
+    .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 45px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .case { min-height: 225px; padding: 25px 28px 29px 0; border-right: 1px solid var(--line); }
+    .case + .case { padding-left: 28px; }
+    .case:last-child { border-right: 0; }
+    .case span { color: var(--red); font-family: var(--font-mono); font-size: .62rem; letter-spacing: .05em; }
+    .case h3 { margin: 33px 0 10px; font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; line-height: 1.05; letter-spacing: -.03em; }
+    .case p { margin: 0; color: var(--ink-soft); font-size: .85rem; line-height: 1.55; }
 
     /* Narrative sections */
     .section { padding: 120px 0; }
@@ -257,7 +293,7 @@
       .issue-line span { display: none; }
       .hero-grid { grid-template-columns: 1fr; min-height: 0; }
       .hero-copy { padding: 43px 0 18px; }
-      h1 { max-width: 9ch; font-size: clamp(3.05rem, 14.2vw, 4.7rem); }
+      h1 { max-width: 10.5ch; font-size: clamp(2.85rem, 12.7vw, 4.4rem); }
       .hero-lede { max-width: 34ch; font-size: 1.18rem; }
       .hero-visual { min-height: 465px; padding: 0 21px 0; border-top: 1px solid var(--line); border-left: 0; }
       .device { width: min(270px, 73%); border-radius: 34px 34px 0 0; }
@@ -267,6 +303,13 @@
       .fact { min-height: 80px; padding: 18px 0; border-right: 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 59px 1fr; align-items: center; }
       .fact:last-child { border-bottom: 0; }
       .fact-number { margin: 0; }
+      .workflow-grid { grid-template-columns: 1fr; gap: 44px; }
+      .workflow-copy h2 { font-size: clamp(2.65rem, 11vw, 3.6rem); }
+      .document-visual { min-height: 500px; }
+      .file-card { left: 16px; width: 65%; }
+      .source-tags { left: 12px; }
+      .session-preview { right: 14px; width: 47%; }
+      .visual-note { right: 12px; top: 26px; width: 142px; }
       .section { padding: 79px 0; }
       .section-rule { grid-template-columns: 1fr; gap: 34px; }
       .section-index { display: flex; gap: 10px; }
@@ -289,6 +332,10 @@
       .map-route { align-items: start; text-align: left; }
       .stage-aside { margin-left: 0; }
       .method-copy { margin-top: 28px; }
+      .case-grid { grid-template-columns: 1fr; }
+      .case, .case + .case { min-height: 0; padding: 23px 0 27px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .case:last-child { border-bottom: 0; }
+      .case h3 { margin-top: 20px; }
       .privacy-grid { gap: 53px; }
       .privacy h2 { font-size: clamp(3rem, 13vw, 4.25rem); }
       .privacy p { font-size: 1.12rem; }
@@ -309,7 +356,7 @@
     <div class="shell masthead">
       <a class="wordmark" href="#oben" aria-label="Verstehen, zum Seitenanfang"><img src="verstehen-icon.png" alt="" width="29" height="29">Verstehen</a>
       <nav class="site-nav" aria-label="Hauptnavigation">
-        <a href="#gedaechtnis">Das Gedächtnis</a>
+        <a href="#ablauf">So funktioniert's</a>
         <a href="#methode">Die Methode</a>
         <a href="#privat">Privat</a>
         <a class="nav-store" href="https://apps.apple.com/de/app/verstehen-lern-ged%C3%A4chtnis/id6787693752" target="_blank" rel="noopener noreferrer">Im App Store <span aria-hidden="true">↗</span></a>
@@ -318,45 +365,67 @@
   </header>
 
   <main id="inhalt">
-    <div id="oben" class="issue-line shell"><b>Verstehen</b><span>Ein persönliches Lern-Gedächtnis · iPhone &amp; iPad</span></div>
+    <div id="oben" class="issue-line shell"><b>Verstehen</b><span>Private KI-Lernapp · iPhone &amp; iPad</span></div>
 
     <section class="hero" aria-labelledby="hero-title">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="kicker">ChatGPT vergisst dich nach jedem Gespräch. Verstehen nicht.</p>
-          <h1 id="hero-title">Ein Gedächtnis für <em>dein</em> Lernen.</h1>
-          <p class="hero-lede">Verstehen merkt sich, was du kannst, welche Frage offen geblieben ist und wie du am besten denkst. Damit die nächste Session genau dort beginnt, wo deine letzte endete.</p>
+          <p class="kicker">Privater KI-Lerncoach für iPhone und iPad</p>
+          <h1 id="hero-title">Dein Lernen beginnt nicht jedes Mal <em>von vorn.</em></h1>
+          <p class="hero-lede">Verstehen hält lokal fest, was du bereits kannst, welche Fragen offen sind und welche Erklärungen dir helfen. Lerne mit deinen eigenen PDFs, Texten und Markdown-Dateien — und entwickle aus einzelnen Sessions ein dauerhaftes Verständnis.</p>
           <div class="action-row">
             <a class="store-link" href="https://apps.apple.com/de/app/verstehen-lern-ged%C3%A4chtnis/id6787693752" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>Im App Store ansehen <span class="arrow" aria-hidden="true">↗</span></a>
-            <a class="quiet-link" href="#gedaechtnis">So funktioniert es</a>
+            <a class="quiet-link" href="#ablauf">In 60 Sekunden ansehen</a>
           </div>
-          <p class="hero-note">Apple Intelligence · lokal auf deinem Gerät · kein Konto</p>
+          <p class="hero-note"><span>9,99 € einmalig · kein Konto · kein Abo · lokal mit Apple Intelligence</span><span class="hero-requirement">Benötigt iPhone 15 Pro oder neuer beziehungsweise iPad mit M-Chip und iOS/iPadOS 26.</span></p>
         </div>
-        <div class="hero-visual" aria-label="Verstehen zeigt erst das Onboarding, dann den nächsten sinnvollen Lernschritt auf dem iPhone">
+        <div class="hero-visual" aria-label="Kurze Produktdemo von Verstehen mit Heute-Ansicht, Wissenslandkarte, Lernjournal und Lernprofil">
           <div class="device" data-onboarding>
-            <div class="device-screen" role="img" aria-label="Onboarding von Verstehen. Nach vier Einführungsansichten zeigt die App die offene Lernfrage aus der letzten Session.">
-              <img class="onboarding-frame is-active" src="onboarding-start.webp" alt="" width="600" height="1304">
-              <img class="onboarding-frame" src="onboarding-gedaechtnisse.webp" alt="" width="600" height="1304">
-              <img class="onboarding-frame" src="onboarding-methoden.webp" alt="" width="600" height="1304">
-              <img class="onboarding-frame" src="onboarding-privat.webp" alt="" width="600" height="1304">
-              <img class="onboarding-frame" data-final-frame src="verstehen-heute.webp" alt="" width="600" height="1304">
+            <div class="device-screen">
+              <img class="onboarding-frame is-active" data-label="Offene Fragen sinnvoll weiterführen" src="verstehen-heute.webp" alt="Heute-Ansicht mit offenen Fragen und dem nächsten sinnvollen Lernschritt" width="600" height="1304" aria-hidden="false">
+              <img class="onboarding-frame" data-label="Zusammenhänge als Wissensnetz" src="verstehen-wissen.webp" alt="Wissenslandkarte mit verbundenen Konzepten" width="600" height="1304" aria-hidden="true">
+              <img class="onboarding-frame" data-label="Jede Session bleibt im Lernjournal" src="verstehen-journal.webp" alt="Lernjournal mit vergangenen Sessions und offenen Fragen" width="600" height="1304" aria-hidden="true">
+              <img class="onboarding-frame" data-final-frame data-label="Ein Lernprofil mit konkretem Nutzen" src="lernprofil-beispiel.svg" alt="Aufgeräumtes Beispiel-Lernprofil mit hilfreichen Lernmustern und nächstem Lernschritt" width="600" height="1304" aria-hidden="true">
             </div>
-            <span class="device-label">Dein Einstieg in 2 Minuten</span>
-            <button class="motion-toggle" type="button" aria-label="Onboarding pausieren" aria-pressed="false">Onboarding pausieren</button>
+            <span class="device-label">Offene Fragen sinnvoll weiterführen</span>
+            <button class="motion-toggle" type="button" aria-label="Demo pausieren" aria-pressed="false">Demo pausieren</button>
           </div>
         </div>
       </div>
     </section>
 
     <section class="shell facts" aria-label="Grundsätze von Verstehen">
-      <div class="fact"><span class="fact-number">01</span><p>Kein Konto.<br>Kein Profiling.</p></div>
-      <div class="fact"><span class="fact-number">02</span><p>KI und Inhalte<br>bleiben bei dir.</p></div>
-      <div class="fact"><span class="fact-number">03</span><p>Einmal kaufen.<br>Kein Abo.</p></div>
+      <div class="fact"><span class="fact-number">01</span><p>Eigene PDFs,<br>Texte und Markdown.</p></div>
+      <div class="fact"><span class="fact-number">02</span><p>KI und Lerninhalte<br>bleiben bei dir.</p></div>
+      <div class="fact"><span class="fact-number">03</span><p>Kein Konto.<br>Kein Abo.</p></div>
+    </section>
+
+    <section id="ablauf" class="workflow section">
+      <div class="shell workflow-grid">
+        <div class="workflow-copy" data-reveal>
+          <p class="kicker">So funktioniert eine Lernsession</p>
+          <h2>Dein Material wird zum persönlichen Lernpfad.</h2>
+          <p>Statt einen Chat nach dem anderen zu sammeln, arbeitest du mit deinen eigenen Inhalten — und behältst offene Punkte über die einzelne Session hinaus.</p>
+          <div class="workflow-steps">
+            <article class="workflow-step"><b>01</b><div><h3>Material importieren</h3><p>PDF, Text oder Markdown auswählen. Die Verarbeitung bleibt lokal auf deinem Gerät.</p></div></article>
+            <article class="workflow-step"><b>02</b><div><h3>Lernmethode wählen</h3><p>Sokratische Fragen, Rückerklärung, Erklärungen in mehreren Tiefen oder Bloom-Lernreise.</p></div></article>
+            <article class="workflow-step"><b>03</b><div><h3>Selbst denken</h3><p>Fragen beantworten, Zusammenhänge erklären und Wissenslücken sichtbar machen.</p></div></article>
+            <article class="workflow-step"><b>04</b><div><h3>Beim nächsten Mal weiterlernen</h3><p>Offene Fragen, Konzepte und hilfreiche Erklärformen bleiben im Lernjournal erhalten.</p></div></article>
+          </div>
+        </div>
+        <div class="document-visual" data-reveal aria-label="Beispiel: Ein PDF wird zur Grundlage einer persönlichen Lernsession">
+          <div class="file-card"><span class="file-type">PDF</span><h3>Prüfungsvorbereitung<br>Optionen.pdf</h3><p>42 Seiten · lokal eingelesen<br>Markierte Quelle für deine Session</p></div>
+          <div class="source-tags"><span>PDF</span><span>TXT</span><span>MD</span></div>
+          <span class="flow-arrow" aria-hidden="true"></span>
+          <div class="visual-note">Aus deinem Material entstehen Fragen, Verbindungen und nächste Schritte.</div>
+          <div class="session-preview"><img src="verstehen-heute.webp" alt="Heute-Ansicht von Verstehen mit dem nächsten Lernschritt" width="600" height="1304" loading="lazy"></div>
+        </div>
+      </div>
     </section>
 
     <section id="gedaechtnis" class="section shell">
       <div class="section-rule">
-        <div class="section-index">01 <span>Das Gedächtnis</span></div>
+        <div class="section-index">02 <span>Drei Perspektiven</span></div>
         <div data-reveal>
           <h2 class="statement">Gute Fragen verdienen <em>einen Anfang</em>, nicht immer einen Neustart.</h2>
           <p class="long-copy">Eine KI kann viel wissen — doch ein gutes Lern­gespräch braucht auch Kontext. <strong>Was konntest du gestern erklären? Wo bist du hängen geblieben? Welche Analogie hat bei dir funktioniert?</strong> Verstehen bewahrt diese Spuren und macht daraus deinen nächsten sinnvollen Schritt.</p>
@@ -409,8 +478,8 @@
           </figure>
           <div class="screen-secondary" data-reveal>
             <figure>
-              <div class="device-sheet"><img src="verstehen-lernprofil.webp" alt="Das persönliche Lernprofil in Verstehen auf dem iPhone" width="600" height="1304" loading="lazy"></div>
-              <figcaption class="caption"><b>Dein Lernprofil</b><span>Dein Weg bleibt deiner</span></figcaption>
+              <div class="device-sheet"><img src="lernprofil-beispiel.svg" alt="Beispiel eines aufgeräumten Lernprofils mit hilfreichen Lernmustern und nächstem Lernschritt" width="600" height="1304" loading="lazy"></div>
+              <figcaption class="caption"><b>Beispiel-Lernprofil</b><span>Dein Lernweg bleibt deiner.</span></figcaption>
             </figure>
             <p class="stage-aside">Statt dir eine perfekte Routine überzustülpen, arbeitet Verstehen mit dem, was bei dir bereits funktioniert.</p>
           </div>
@@ -420,7 +489,7 @@
 
     <section id="methode" class="section shell">
       <div class="section-rule">
-        <div class="section-index">02 <span>Die Methode</span></div>
+        <div class="section-index">03 <span>Vier Methoden. Ein persönlicher Lernweg.</span></div>
         <div class="method-layout" data-reveal>
           <div>
             <h2 class="statement">Lernen ist kein <em>Durchklicken.</em></h2>
@@ -436,7 +505,7 @@
               <div class="method-detail">Du erklärst ein Thema mit eigenen Worten. Verstehen hört auf Lücken, Unschärfen und Stellen, an denen eine gute Analogie mehr hilft als die nächste Definition.<cite>Feynman-Methode</cite></div>
             </details>
             <details>
-              <summary>Mehrere Verständnisebenen</summary>
+              <summary>Erklärungen in mehreren Tiefen</summary>
               <div class="method-detail">Vom Alltagsbild bis zur formalen Theorie: Eine Erklärung kann auf der Ebene beginnen, die gerade trägt — und von dort tiefer gehen.<cite>Elaboration</cite></div>
             </details>
             <details>
@@ -448,10 +517,24 @@
       </div>
     </section>
 
+    <section class="section shell use-cases" aria-labelledby="cases-title">
+      <div class="section-rule">
+        <div class="section-index">04 <span>Wofür du es nutzt</span></div>
+        <div data-reveal>
+          <h2 id="cases-title" class="statement">Aus Material wird <em>anwendbares</em> Wissen.</h2>
+          <div class="case-grid">
+            <article class="case"><span>01 · PRÜFUNG</span><h3>Gezielt vorbereiten</h3><p>Offene Fragen aus mehreren Sessions wieder aufnehmen und nicht erst kurz vor der Prüfung neu entdecken.</p></article>
+            <article class="case"><span>02 · FACHBUCH</span><h3>Kapitel durcharbeiten</h3><p>Eigene PDFs als Grundlage nutzen, zentrale Begriffe verbinden und Verständnis mit Rückerklärungen prüfen.</p></article>
+            <article class="case"><span>03 · NEUES THEMA</span><h3>Wirklich durchdringen</h3><p>Von einem einfachen Alltagsbild schrittweise zur Fachsprache und zur formalen Theorie gelangen.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="privat" class="privacy section" aria-labelledby="privacy-title">
       <div class="shell">
         <div class="section-rule">
-          <div class="section-index">03 <span>Privat by design</span></div>
+          <div class="section-index">05 <span>Privat by design</span></div>
           <div class="privacy-grid" data-reveal>
             <div>
               <h2 id="privacy-title">Deine Wissenslücken sind <em>deine</em> Sache.</h2>
@@ -476,6 +559,7 @@
         <p>Verstehen für iPhone und iPad. Ein persönliches Gedächtnis für alle Fragen, die du ernst nimmst — ohne laufende Kosten.</p>
         <div class="price-mark"><b>9,99&nbsp;€</b><span>Einmal kaufen<br>kein Abo</span></div>
         <a class="store-link" href="https://apps.apple.com/de/app/verstehen-lern-ged%C3%A4chtnis/id6787693752" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>Für 9,99&nbsp;€ im App Store kaufen <span class="arrow" aria-hidden="true">↗</span></a>
+        <p class="hero-note" style="margin-top:18px">Benötigt iPhone 15 Pro oder neuer beziehungsweise iPad mit M-Chip und iOS/iPadOS 26.</p>
       </div>
     </section>
   </main>
@@ -520,7 +604,7 @@
     </div>
   </div>
   <div class="cookie" id="cookie" role="region" aria-label="Datenschutzhinweis">
-    <p>Datenschutzhinweis: Diese Website verwendet keine Cookies — genau wie die App. Angaben aus dem Update-Formular werden ausschließlich zur gewünschten Benachrichtigung verwendet. Details in der <a class="legal-link" href="datenschutz.html" data-legal-title="Datenschutz">Datenschutzerklärung</a>.</p>
+    <p>Datenschutzhinweis: Diese Website verwendet keine Cookies — genau wie die App. Angaben aus dem Update-Formular werden ausschließlich für die gewünschten Produktupdates verwendet. Details in der <a class="legal-link" href="datenschutz.html" data-legal-title="Datenschutz">Datenschutzerklärung</a>.</p>
     <button type="button" id="cookieOk">Alles klar</button>
   </div>
 
@@ -554,13 +638,17 @@
 
       const show = (nextIndex) => {
         index = nextIndex;
-        frames.forEach((frame, frameIndex) => frame.classList.toggle('is-active', frameIndex === index));
+        frames.forEach((frame, frameIndex) => {
+          const active = frameIndex === index;
+          frame.classList.toggle('is-active', active);
+          frame.setAttribute('aria-hidden', String(!active));
+        });
         complete = index === finalIndex;
-        label.textContent = complete ? 'Dein nächster sinnvoller Schritt' : 'Dein Einstieg in 2 Minuten';
+        label.textContent = frames[index].dataset.label || 'Verstehen im Einsatz';
         if (complete) {
-          toggle.textContent = 'Onboarding erneut abspielen';
+          toggle.textContent = 'Demo erneut abspielen';
           toggle.setAttribute('aria-pressed', 'false');
-          toggle.setAttribute('aria-label', 'Onboarding erneut abspielen');
+          toggle.setAttribute('aria-label', 'Demo erneut abspielen');
           toggle.classList.remove('is-paused');
           toggle.classList.add('is-complete');
         }
@@ -585,14 +673,14 @@
           if (complete) {
             paused = false;
             show(0);
-            toggle.textContent = 'Onboarding pausieren';
-            toggle.setAttribute('aria-label', 'Onboarding pausieren');
+            toggle.textContent = 'Demo pausieren';
+            toggle.setAttribute('aria-label', 'Demo pausieren');
             toggle.classList.remove('is-complete');
             scheduleNext();
             return;
           }
           paused = !paused;
-          toggle.textContent = paused ? 'Onboarding fortsetzen' : 'Onboarding pausieren';
+          toggle.textContent = paused ? 'Demo fortsetzen' : 'Demo pausieren';
           toggle.setAttribute('aria-label', toggle.textContent);
           toggle.setAttribute('aria-pressed', String(paused));
           toggle.classList.toggle('is-paused', paused);
