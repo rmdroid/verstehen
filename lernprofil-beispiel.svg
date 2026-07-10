@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1304" viewBox="0 0 600 1304" role="img" aria-labelledby="title desc">
+  <title id="title">Beispiel für ein aufgeräumtes Lernprofil in Verstehen</title>
+  <desc id="desc">Ein persönliches Lernprofil mit drei hilfreichen Lernmustern und einem konkreten nächsten Lernschritt.</desc>
+  <rect width="600" height="1304" fill="#f4f4fb"/>
+  <text x="50" y="68" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#111">09:41</text>
+  <rect x="205" y="26" width="190" height="56" rx="28" fill="#050505"/>
+  <g transform="translate(505 52)" fill="none" stroke="#228b52" stroke-width="4"><rect x="0" y="0" width="28" height="18" rx="4"/><path d="M6 9h16M14 3v12"/></g>
+  <circle cx="535" cy="132" r="32" fill="#fff"/><path d="M526 132v-8a9 9 0 0 1 18 0v8" fill="none" stroke="#278c54" stroke-width="4"/><rect x="523" y="130" width="24" height="18" rx="3" fill="#278c54"/>
+  <text x="34" y="190" font-family="Arial, sans-serif" font-size="50" font-weight="700" fill="#070707">Ich</text>
+  <text x="50" y="253" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#8b8b93">Dein Lernprofil</text>
+
+  <rect x="28" y="286" width="544" height="590" rx="34" fill="#fff"/>
+  <text x="62" y="344" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#151515">So lernst du besonders gut</text>
+  <line x1="62" y1="374" x2="538" y2="374" stroke="#e4e4e8" stroke-width="2"/>
+
+  <g transform="translate(64 418)">
+    <circle cx="22" cy="22" r="22" fill="#f7ebcf"/><path d="M16 21c0-8 12-8 12 0 0 4-3 5-3 9h-6c0-4-3-5-3-9Z" fill="none" stroke="#bd8421" stroke-width="3"/><path d="M19 35h6" stroke="#bd8421" stroke-width="3"/>
+    <text x="64" y="6" font-family="Georgia, serif" font-size="24" font-weight="700" fill="#171717">Konkrete Beispiele</text>
+    <text x="64" y="39" font-family="Arial, sans-serif" font-size="20" fill="#50505a">Zahlenbeispiele helfen dir, abstrakte</text>
+    <text x="64" y="67" font-family="Arial, sans-serif" font-size="20" fill="#50505a">Zusammenhänge schneller zu greifen.</text>
+  </g>
+  <line x1="62" y1="517" x2="538" y2="517" stroke="#e4e4e8" stroke-width="2"/>
+
+  <g transform="translate(64 560)">
+    <circle cx="22" cy="22" r="22" fill="#e9eefb"/><path d="M11 26h22M14 18h16M18 10h8" fill="none" stroke="#3158a5" stroke-width="3" stroke-linecap="round"/>
+    <text x="64" y="6" font-family="Georgia, serif" font-size="24" font-weight="700" fill="#171717">Schrittweise Herleitung</text>
+    <text x="64" y="39" font-family="Arial, sans-serif" font-size="20" fill="#50505a">Formeln werden klarer, wenn jeder Schritt</text>
+    <text x="64" y="67" font-family="Arial, sans-serif" font-size="20" fill="#50505a">auf dem vorherigen aufbaut.</text>
+  </g>
+  <line x1="62" y1="659" x2="538" y2="659" stroke="#e4e4e8" stroke-width="2"/>
+
+  <g transform="translate(64 702)">
+    <circle cx="22" cy="22" r="22" fill="#e9f2e9"/><path d="M12 14h20v14H21l-6 6v-6h-3Z" fill="none" stroke="#4d7351" stroke-width="3" stroke-linejoin="round"/>
+    <text x="64" y="6" font-family="Georgia, serif" font-size="24" font-weight="700" fill="#171717">Mit eigenen Worten</text>
+    <text x="64" y="39" font-family="Arial, sans-serif" font-size="20" fill="#50505a">Du erkennst Zusammenhänge gut, wenn du</text>
+    <text x="64" y="67" font-family="Arial, sans-serif" font-size="20" fill="#50505a">sie selbst zurückerklärst.</text>
+  </g>
+
+  <text x="50" y="945" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#8b8b93">Dein nächster Lernschritt</text>
+  <rect x="28" y="980" width="544" height="188" rx="32" fill="#263987"/>
+  <text x="62" y="1034" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1" fill="#c9d1ee">OFFENE VERBINDUNG</text>
+  <text x="62" y="1080" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#fff">Inneren Wert und Zeitwert</text>
+  <text x="62" y="1115" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#fff">sicher unterscheiden</text>
+  <text x="62" y="1150" font-family="Arial, sans-serif" font-size="18" fill="#d4d9ef">Empfohlen: Rückerklärung · etwa 8 Minuten</text>
+
+  <rect x="92" y="1211" width="416" height="72" rx="36" fill="#fff" opacity=".96"/>
+  <g font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#24242a">
+    <circle cx="176" cy="1237" r="11" fill="#c4c4ca"/><text x="176" y="1269">Heute</text>
+    <g transform="translate(300 1237)" fill="#24242a"><circle cx="-11" cy="-7" r="6"/><circle cx="3" cy="-7" r="6"/><circle cx="-11" cy="7" r="6"/><circle cx="3" cy="7" r="6"/><circle cx="-4" cy="0" r="6"/></g><text x="300" y="1269">Wissen</text>
+    <circle cx="424" cy="1237" r="16" fill="#263987"/><circle cx="424" cy="1233" r="5" fill="#fff"/><path d="M415 1246c2-8 16-8 18 0" fill="#fff"/><text x="424" y="1269" fill="#263987" font-weight="700">Ich</text>
+  </g>
+</svg>
