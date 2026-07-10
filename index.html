@@ -278,6 +278,10 @@
     .cookie p { margin: 0 0 12px; color: #d5d7cb; font-size: .72rem; line-height: 1.52; }
     .cookie a { color: var(--paper-light); }
     .cookie button { min-height: 33px; padding: 0 12px; color: var(--night); border: 0; background: var(--paper-light); font-size: .74rem; font-weight: 700; cursor: pointer; }
+    .scroll-top { position: fixed; right: 20px; bottom: 20px; z-index: 35; display: grid; place-items: center; width: 48px; height: 48px; padding: 0; color: var(--ink); border: 1px solid var(--ink); border-radius: 0; background: var(--paper-light); box-shadow: 5px 6px 0 rgb(29 32 27 / .14); cursor: pointer; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(10px); transition: color .16s ease, background .16s ease, box-shadow .16s ease, opacity .2s ease, transform .2s ease, visibility 0s linear .2s; }
+    .scroll-top.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: none; transition-delay: 0s; }
+    .scroll-top:hover { color: var(--paper-light); background: var(--ink); box-shadow: 2px 3px 0 rgb(29 32 27 / .14); transform: translate(2px, 2px); }
+    .scroll-top svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-linecap: square; stroke-linejoin: miter; stroke-width: 1.8; }
 
     [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .48s ease, transform .48s ease; }
     [data-reveal].is-visible { opacity: 1; transform: none; }
@@ -347,6 +351,7 @@
       .footer-row { align-items: flex-start; flex-direction: column; }
       .footer-links { justify-content: flex-start; gap: 12px 17px; }
       .update-card { padding: 31px 24px; }
+      .scroll-top { right: 16px; bottom: 16px; }
     }
   </style>
 </head>
@@ -607,6 +612,9 @@
     <p>Datenschutzhinweis: Diese Website verwendet keine Cookies — genau wie die App. Angaben aus dem Update-Formular werden ausschließlich für die gewünschten Produktupdates verwendet. Details in der <a class="legal-link" href="datenschutz.html" data-legal-title="Datenschutz">Datenschutzerklärung</a>.</p>
     <button type="button" id="cookieOk">Alles klar</button>
   </div>
+  <button class="scroll-top" type="button" id="scrollTop" aria-label="Nach oben scrollen" title="Nach oben">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 11.5 12 4.5l7 7M12 5v15"/></svg>
+  </button>
 
   <script>
     const reveal = document.querySelectorAll('[data-reveal]');
@@ -737,6 +745,16 @@
       try { localStorage.setItem('verstehen-cookie-hinweis', '1'); } catch (_) {}
       cookie.classList.add('hide');
     });
+
+    const scrollTopButton = document.getElementById('scrollTop');
+    const updateScrollTopButton = () => scrollTopButton.classList.toggle('is-visible', window.scrollY > Math.min(640, window.innerHeight * .7));
+    addEventListener('scroll', updateScrollTopButton, { passive: true });
+    addEventListener('resize', updateScrollTopButton);
+    scrollTopButton.addEventListener('click', () => {
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+    });
+    updateScrollTopButton();
 
     const updates = document.getElementById('updates');
     const openUpdates = document.getElementById('openUpdates');
