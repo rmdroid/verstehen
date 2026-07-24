@@ -15,9 +15,9 @@
 - Verarbeitung zu 100 % on-device über das Apple-Intelligence-Modell. 0 externe Übertragungen, kein Konto, keine Telemetrie, keine Server.
 
 ## Eckdaten
-- Plattform: iOS/iPadOS (iPhone 15 Pro oder neuer, iPads mit M-Chip, Apple Intelligence erforderlich)
+- Plattform: iOS/iPadOS 26 oder neuer (iPhone 15 Pro oder neuer, iPads mit M-Chip, Apple Intelligence erforderlich)
 - Sprachen: Deutsch, Englisch
-- Preis: Einmalkauf, kein Abo
+- Preis: 9,99 € als Einmalkauf, kein Abo
 - Vertrieb: Apple App Store
 - Entwickler: Robert Meyer, Deutschland
 
