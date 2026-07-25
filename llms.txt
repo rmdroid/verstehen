@@ -1,6 +1,6 @@
 # Verstehen
 
-> Lern-App für iPhone und iPad, die sich merkt, was der Nutzer kann, was er gelernt hat und wie er am besten versteht. Die KI läuft vollständig lokal über Apple Intelligence — kein Konto, keine Server, keine Datenübertragung. Claim: „ChatGPT vergisst dich nach jedem Gespräch. Verstehen nicht."
+> Private Lern-App für iPhone und iPad, die dabei hilft, komplexe Themen wirklich zu durchdringen. Verstehen merkt sich, was der Nutzer kann, was offen ist und wie er am besten lernt. Die KI läuft vollständig lokal über Apple Intelligence — kein Konto, keine Server, keine Übertragung der Lerninhalte. Leitfrage: „Wenn KI auf alles eine Antwort hat: Was sollten wir noch lernen?"
 
 ## Was die App macht
 - Persönlicher KI-Lerncoach mit vier wissenschaftlich fundierten Methoden: Sokratische Fragen (Testing-Effekt, Roediger & Karpicke 2006), Rückerklärung (Feynman-Methode), Multi-Level-Erklärung (Elaboration), Bloom-Lernreise (Bloom-Taxonomie).
@@ -23,6 +23,7 @@
 
 ## Seiten
 - Startseite: https://verstehen-app.de/
+- Einblick in App und Funktionsweise: https://verstehen-app.de/einblick.html
 - Support: https://verstehen-app.de/support.html
 - EULA: https://verstehen-app.de/eula.html
 - Datenschutz: https://verstehen-app.de/datenschutz.html
