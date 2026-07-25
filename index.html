@@ -1036,6 +1036,7 @@
     position: absolute;
     inset: 0;
     overflow: visible;
+    pointer-events: none;
   }
 
   .knowledge-lines path {
@@ -1062,8 +1063,32 @@
     stroke-width: 2.2;
   }
 
+  .knowledge-signal {
+    fill: var(--warm);
+    filter: drop-shadow(0 0 5px color-mix(in srgb, var(--warm) 58%, transparent));
+    opacity: 0;
+  }
+
+  .knowledge-signal.is-running {
+    animation: knowledge-signal 980ms cubic-bezier(.25, .7, .25, 1);
+  }
+
+  .knowledge-ripple {
+    fill: none;
+    stroke: color-mix(in srgb, var(--accent) 76%, white);
+    stroke-width: 2;
+    opacity: 0;
+  }
+
   @keyframes draw-line {
     to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes knowledge-signal {
+    0% { opacity: 0; }
+    14% { opacity: 1; }
+    72% { opacity: .92; }
+    100% { opacity: 0; }
   }
 
   .map-node {
@@ -1104,6 +1129,11 @@
     background: var(--accent);
     color: white;
     transform: scale(1.05);
+  }
+
+  .map-node:active {
+    transform: scale(.97);
+    transition-duration: 90ms;
   }
 
   .node-1 { top: 2%; left: 34%; --delay: 100ms; }
@@ -2188,6 +2218,11 @@
       stroke-dashoffset: 0 !important;
     }
 
+    .knowledge-signal,
+    .knowledge-ripple {
+      display: none;
+    }
+
     .thought-node {
       transform: scale(1);
       opacity: 1;
@@ -2418,14 +2453,86 @@
 
       <div class="knowledge-stage" id="knowledgeStage" aria-label="Interaktive Wissensstruktur">
         <svg class="knowledge-lines" viewBox="0 0 700 735" preserveAspectRatio="none" aria-hidden="true">
-          <path pathLength="1" style="--delay: 160ms" data-from="netze" data-to="training" d="M283 86 C217 137 161 192 105 278"/>
-          <path pathLength="1" style="--delay: 260ms" data-from="netze" data-to="embedding" d="M350 102 C430 140 507 191 575 289"/>
-          <path pathLength="1" style="--delay: 360ms" data-from="training" data-to="gradient" d="M91 338 C113 454 158 530 215 620"/>
-          <path pathLength="1" style="--delay: 460ms" data-from="embedding" data-to="transfer" d="M589 354 C563 466 525 548 479 626"/>
-          <path pathLength="1" style="--delay: 560ms" data-from="training" data-to="fragen" d="M151 329 C221 330 268 349 319 392"/>
-          <path pathLength="1" style="--delay: 660ms" data-from="embedding" data-to="fragen" d="M548 336 C476 340 430 358 382 399"/>
-          <path pathLength="1" style="--delay: 760ms" data-from="fragen" data-to="gradient" d="M335 456 C305 513 264 568 225 620"/>
-          <path pathLength="1" style="--delay: 860ms" data-from="fragen" data-to="transfer" d="M379 457 C408 517 444 568 474 624"/>
+          <g class="knowledge-ripples">
+            <circle class="knowledge-ripple" data-ripple="netze" cx="316" cy="83" r="56">
+              <animate attributeName="r" values="56;112" dur="720ms" begin="indefinite" fill="remove"/>
+              <animate attributeName="opacity" values=".5;.18;0" dur="720ms" begin="indefinite" fill="remove"/>
+            </circle>
+            <circle class="knowledge-ripple" data-ripple="training" cx="103" cy="319" r="56">
+              <animate attributeName="r" values="56;112" dur="720ms" begin="indefinite" fill="remove"/>
+              <animate attributeName="opacity" values=".5;.18;0" dur="720ms" begin="indefinite" fill="remove"/>
+            </circle>
+            <circle class="knowledge-ripple" data-ripple="embedding" cx="593" cy="331" r="56">
+              <animate attributeName="r" values="56;112" dur="720ms" begin="indefinite" fill="remove"/>
+              <animate attributeName="opacity" values=".5;.18;0" dur="720ms" begin="indefinite" fill="remove"/>
+            </circle>
+            <circle class="knowledge-ripple" data-ripple="gradient" cx="200" cy="657" r="56">
+              <animate attributeName="r" values="56;112" dur="720ms" begin="indefinite" fill="remove"/>
+              <animate attributeName="opacity" values=".5;.18;0" dur="720ms" begin="indefinite" fill="remove"/>
+            </circle>
+            <circle class="knowledge-ripple" data-ripple="transfer" cx="491" cy="660" r="56">
+              <animate attributeName="r" values="56;112" dur="720ms" begin="indefinite" fill="remove"/>
+              <animate attributeName="opacity" values=".5;.18;0" dur="720ms" begin="indefinite" fill="remove"/>
+            </circle>
+            <circle class="knowledge-ripple" data-ripple="fragen" cx="351" cy="427" r="56">
+              <animate attributeName="r" values="56;112" dur="720ms" begin="indefinite" fill="remove"/>
+              <animate attributeName="opacity" values=".5;.18;0" dur="720ms" begin="indefinite" fill="remove"/>
+            </circle>
+          </g>
+
+          <g class="knowledge-branches">
+            <path id="route-netze-training" pathLength="1" style="--delay: 160ms" data-from="netze" data-to="training" d="M283 86 C217 137 161 192 105 278"/>
+            <path id="route-netze-embedding" pathLength="1" style="--delay: 260ms" data-from="netze" data-to="embedding" d="M350 102 C430 140 507 191 575 289"/>
+            <path id="route-training-gradient" pathLength="1" style="--delay: 360ms" data-from="training" data-to="gradient" d="M91 338 C113 454 158 530 215 620"/>
+            <path id="route-embedding-transfer" pathLength="1" style="--delay: 460ms" data-from="embedding" data-to="transfer" d="M589 354 C563 466 525 548 479 626"/>
+            <path id="route-training-fragen" pathLength="1" style="--delay: 560ms" data-from="training" data-to="fragen" d="M151 329 C221 330 268 349 319 392"/>
+            <path id="route-embedding-fragen" pathLength="1" style="--delay: 660ms" data-from="embedding" data-to="fragen" d="M548 336 C476 340 430 358 382 399"/>
+            <path id="route-fragen-gradient" pathLength="1" style="--delay: 760ms" data-from="fragen" data-to="gradient" d="M335 456 C305 513 264 568 225 620"/>
+            <path id="route-fragen-transfer" pathLength="1" style="--delay: 860ms" data-from="fragen" data-to="transfer" d="M379 457 C408 517 444 568 474 624"/>
+          </g>
+
+          <g class="knowledge-signals">
+            <circle class="knowledge-signal" data-from="netze" data-to="training" r="6">
+              <animateMotion dur="980ms" begin="indefinite" repeatCount="1" fill="remove" calcMode="linear" keyPoints="0;1" keyTimes="0;1">
+                <mpath href="#route-netze-training"/>
+              </animateMotion>
+            </circle>
+            <circle class="knowledge-signal" data-from="netze" data-to="embedding" r="6">
+              <animateMotion dur="980ms" begin="indefinite" repeatCount="1" fill="remove" calcMode="linear" keyPoints="0;1" keyTimes="0;1">
+                <mpath href="#route-netze-embedding"/>
+              </animateMotion>
+            </circle>
+            <circle class="knowledge-signal" data-from="training" data-to="gradient" r="6">
+              <animateMotion dur="980ms" begin="indefinite" repeatCount="1" fill="remove" calcMode="linear" keyPoints="0;1" keyTimes="0;1">
+                <mpath href="#route-training-gradient"/>
+              </animateMotion>
+            </circle>
+            <circle class="knowledge-signal" data-from="embedding" data-to="transfer" r="6">
+              <animateMotion dur="980ms" begin="indefinite" repeatCount="1" fill="remove" calcMode="linear" keyPoints="0;1" keyTimes="0;1">
+                <mpath href="#route-embedding-transfer"/>
+              </animateMotion>
+            </circle>
+            <circle class="knowledge-signal" data-from="training" data-to="fragen" r="6">
+              <animateMotion dur="980ms" begin="indefinite" repeatCount="1" fill="remove" calcMode="linear" keyPoints="0;1" keyTimes="0;1">
+                <mpath href="#route-training-fragen"/>
+              </animateMotion>
+            </circle>
+            <circle class="knowledge-signal" data-from="embedding" data-to="fragen" r="6">
+              <animateMotion dur="980ms" begin="indefinite" repeatCount="1" fill="remove" calcMode="linear" keyPoints="0;1" keyTimes="0;1">
+                <mpath href="#route-embedding-fragen"/>
+              </animateMotion>
+            </circle>
+            <circle class="knowledge-signal" data-from="fragen" data-to="gradient" r="6">
+              <animateMotion dur="980ms" begin="indefinite" repeatCount="1" fill="remove" calcMode="linear" keyPoints="0;1" keyTimes="0;1">
+                <mpath href="#route-fragen-gradient"/>
+              </animateMotion>
+            </circle>
+            <circle class="knowledge-signal" data-from="fragen" data-to="transfer" r="6">
+              <animateMotion dur="980ms" begin="indefinite" repeatCount="1" fill="remove" calcMode="linear" keyPoints="0;1" keyTimes="0;1">
+                <mpath href="#route-fragen-transfer"/>
+              </animateMotion>
+            </circle>
+          </g>
         </svg>
 
         <button class="map-node node-1" type="button" data-node="netze" data-title="Neuronale Netze" data-copy="Ein Thema wird greifbar, sobald seine Beziehungen sichtbar werden." aria-pressed="true">Neuronale<br>Netze</button>
@@ -2790,6 +2897,9 @@
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
             entry.target.classList.add("is-visible");
+            if (entry.target.classList.contains("knowledge-stage")) {
+              entry.target.dispatchEvent(new Event("knowledge-ready"));
+            }
             revealObserver.unobserve(entry.target);
           });
         }, { threshold: .22 })
@@ -2802,11 +2912,60 @@
 
     const knowledgeStage = document.getElementById("knowledgeStage");
     const mapNodes = [...knowledgeStage.querySelectorAll(".map-node")];
-    const mapPaths = [...knowledgeStage.querySelectorAll(".knowledge-lines path")];
+    const mapPaths = [...knowledgeStage.querySelectorAll(".knowledge-branches path")];
+    const mapSignals = [...knowledgeStage.querySelectorAll(".knowledge-signal")];
+    const mapRipples = [...knowledgeStage.querySelectorAll(".knowledge-ripple")];
     const mapDetailTitle = document.getElementById("mapDetailTitle");
     const mapDetailCopy = document.getElementById("mapDetailCopy");
 
-    const selectMapNode = (node) => {
+    const syncMapRipples = () => {
+      const stageRect = knowledgeStage.getBoundingClientRect();
+      if (!stageRect.width || !stageRect.height) return;
+
+      mapNodes.forEach((node) => {
+        const nodeRect = node.getBoundingClientRect();
+        const ripple = mapRipples.find((item) => item.dataset.ripple === node.dataset.node);
+        if (!ripple) return;
+        ripple.setAttribute("cx", String(((nodeRect.left + nodeRect.width / 2 - stageRect.left) / stageRect.width) * 700));
+        ripple.setAttribute("cy", String(((nodeRect.top + nodeRect.height / 2 - stageRect.top) / stageRect.height) * 735));
+      });
+    };
+
+    const playMapPulse = (selected) => {
+      if (reducedMotion) return;
+      syncMapRipples();
+
+      const ripple = mapRipples.find((item) => item.dataset.ripple === selected);
+      ripple?.querySelectorAll("animate").forEach((animation) => {
+        animation.beginElement?.();
+      });
+
+      let relatedIndex = 0;
+      mapSignals.forEach((signal) => {
+        const isRelated = signal.dataset.from === selected || signal.dataset.to === selected;
+        if (!isRelated) return;
+
+        const motion = signal.querySelector("animateMotion");
+        if (typeof motion?.beginElement !== "function") return;
+        const runsBackward = signal.dataset.to === selected;
+        motion.setAttribute("keyPoints", runsBackward ? "1;0" : "0;1");
+
+        window.clearTimeout(signal.resetTimer);
+        signal.classList.remove("is-running");
+        void signal.getBoundingClientRect();
+
+        window.setTimeout(() => {
+          signal.classList.add("is-running");
+          motion.beginElement();
+          signal.resetTimer = window.setTimeout(() => {
+            signal.classList.remove("is-running");
+          }, 1020);
+        }, relatedIndex * 70);
+        relatedIndex += 1;
+      });
+    };
+
+    const selectMapNode = (node, { animate = true } = {}) => {
       const selected = node.dataset.node;
       knowledgeStage.classList.add("has-selection");
       mapNodes.forEach((item) => {
@@ -2817,12 +2976,37 @@
       });
       mapDetailTitle.textContent = node.dataset.title;
       mapDetailCopy.textContent = node.dataset.copy;
+      if (animate) playMapPulse(selected);
     };
 
     mapNodes.forEach((node) => {
       node.addEventListener("click", () => selectMapNode(node));
-      node.addEventListener("focus", () => selectMapNode(node));
+      node.addEventListener("focus", () => {
+        if (node.getAttribute("aria-pressed") !== "true") {
+          selectMapNode(node, { animate: false });
+        }
+      });
     });
+
+    knowledgeStage.addEventListener("knowledge-ready", () => {
+      const initialNode = mapNodes.find((node) => node.getAttribute("aria-pressed") === "true");
+      if (initialNode) {
+        window.setTimeout(() => {
+          if (initialNode.getAttribute("aria-pressed") === "true") selectMapNode(initialNode);
+        }, 920);
+      }
+    }, { once: true });
+
+    if (!revealObserver && knowledgeStage.classList.contains("is-visible")) {
+      const initialNode = mapNodes.find((node) => node.getAttribute("aria-pressed") === "true");
+      if (initialNode) {
+        window.setTimeout(() => {
+          if (initialNode.getAttribute("aria-pressed") === "true") selectMapNode(initialNode);
+        }, 920);
+      }
+    }
+
+    window.addEventListener("resize", syncMapRipples);
 
     const updatesDialog = document.getElementById("updatesDialog");
     const pageDialog = document.getElementById("pageDialog");
