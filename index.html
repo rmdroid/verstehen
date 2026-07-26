@@ -1176,12 +1176,62 @@
   }
 
   .methods {
+    position: relative;
     background: var(--graphite);
     color: var(--night-fg);
   }
 
+  .learning-wheel-scroll {
+    position: relative;
+    height: 340svh;
+  }
+
+  .learning-wheel-sticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    min-height: 620px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .learning-wheel-sticky::before {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 72% 39%, rgba(184,109,66,.16), transparent 34%),
+      radial-gradient(ellipse at 28% 112%, rgba(41,63,145,.18), transparent 44%),
+      linear-gradient(132deg, #20211e, var(--graphite) 48%, #171816);
+    content: "";
+  }
+
+  .learning-wheel-sticky::after {
+    position: absolute;
+    z-index: -1;
+    right: -8%;
+    bottom: 23%;
+    left: 34%;
+    height: 1px;
+    transform: rotate(-8deg);
+    background: linear-gradient(90deg, transparent, rgba(238,228,209,.14), transparent);
+    content: "";
+  }
+
+  .learning-wheel-layout {
+    display: grid;
+    width: min(100% - 40px, 1220px);
+    height: 100%;
+    margin-inline: auto;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 8px;
+    padding: calc(var(--header-h) + 28px) 0 26px;
+  }
+
   .methods-head {
-    padding: 105px 0 48px;
+    position: relative;
+    z-index: 4;
+    padding: 0;
   }
 
   .methods-head .eyebrow {
@@ -1189,60 +1239,351 @@
   }
 
   .methods-head h2 {
-    max-width: 12ch;
+    max-width: 11ch;
     margin: 0;
-    font-size: clamp(45px, 11.8vw, 86px);
+    font-size: clamp(36px, 9.8vw, 62px);
     letter-spacing: -.035em;
-    line-height: .98;
+    line-height: .96;
   }
 
-  .method-list {
-    margin: 0;
-    padding: 0 0 110px;
-    list-style: none;
+  .learning-wheel-copy {
+    position: relative;
+    --wheel-copy-min: 150px;
+    height: max(var(--wheel-copy-height, 0px), var(--wheel-copy-min));
+    margin-top: 20px;
   }
 
-  .method {
-    display: grid;
-    min-height: 42svh;
-    align-content: center;
-    padding: 32px 0;
-    border-top: 1px solid rgba(246,242,233,.18);
-    opacity: .38;
-    transition: opacity 500ms ease;
+  .wheel-station,
+  .wheel-resolution {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    max-width: 38ch;
+    transform: translateY(14px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease, transform 260ms var(--ease-out);
   }
 
-  .method.is-visible {
-    opacity: 1;
+  .wheel-station.is-active {
+    transform: translateY(0);
+    opacity: var(--wheel-copy-opacity, 1);
   }
 
-  .method-top {
+  .wheel-station-top {
     display: flex;
-    align-items: baseline;
-    gap: 15px;
+    margin-bottom: 8px;
+    align-items: center;
+    gap: 11px;
   }
 
-  .method-number {
+  .wheel-station-number,
+  .wheel-station-name,
+  .wheel-resolution small {
     color: #d59a72;
     font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: .1em;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
   }
 
-  .method h3 {
+  .wheel-station-name {
+    color: rgba(246,242,233,.5);
+  }
+
+  .wheel-station p,
+  .wheel-resolution strong {
+    display: block;
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(54px, 15vw, 118px);
+    font-size: clamp(22px, 5.6vw, 30px);
     font-weight: 400;
-    letter-spacing: -.035em;
-    line-height: .9;
+    letter-spacing: -.018em;
+    line-height: 1.13;
   }
 
-  .method p {
-    max-width: 37ch;
-    margin: 24px 0 0 auto;
-    color: rgba(246,242,233,.62);
-    font-size: clamp(16px, 4.5vw, 21px);
+  .wheel-resolution {
+    transform: translateY(calc((1 - var(--wheel-resolve, 0)) * 14px));
+    opacity: var(--wheel-resolve, 0);
+  }
+
+  .wheel-resolution small {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .learning-wheel-stage {
+    position: relative;
+    width: min(82vw, 43svh, 360px);
+    aspect-ratio: 1;
+    margin: 6px auto 0;
+    align-self: start;
+    perspective: 1350px;
+    perspective-origin: 50% 42%;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .learning-wheel-shadow {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    left: 5%;
+    height: 29%;
+    transform: translateY(14%) scale(var(--wheel-scale, .78));
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(0,0,0,.62), transparent);
+    filter: blur(12px);
+    opacity: calc(.42 + var(--wheel-entrance, 0) * .36);
+  }
+
+  .learning-wheel-marker {
+    position: absolute;
+    z-index: 6;
+    top: 3.5%;
+    left: 50%;
+    width: 1px;
+    height: 25px;
+    transform: translateX(-50%);
+    background: linear-gradient(#d59a72, rgba(213,154,114,0));
+    opacity: calc(.3 + var(--wheel-entrance, 0) * .7);
+  }
+
+  .learning-wheel-marker::before {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    transform: translateX(-50%) rotate(45deg);
+    border: 1px solid #d59a72;
+    background: var(--graphite);
+    content: "";
+  }
+
+  .learning-wheel-object {
+    position: absolute;
+    z-index: 3;
+    inset: 8%;
+    transform:
+      translateY(var(--wheel-lift, 24px))
+      rotateX(var(--wheel-tilt, 62deg))
+      rotateZ(var(--wheel-rotation, 0deg))
+      scale(var(--wheel-scale, .78));
+    transform-style: preserve-3d;
+    cursor: grab;
+    will-change: transform;
+  }
+
+  .learning-wheel-object.is-dragging {
+    cursor: grabbing;
+  }
+
+  .learning-wheel-depth,
+  .learning-wheel-depth::before,
+  .learning-wheel-depth::after {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    content: "";
+  }
+
+  .learning-wheel-depth {
+    transform: translateZ(-18px);
+    border: 1px solid rgba(238,228,209,.12);
+    background: linear-gradient(145deg, #3a3933, #131411 72%);
+    box-shadow: 0 34px 68px rgba(0,0,0,.5);
+  }
+
+  .learning-wheel-depth::before {
+    inset: 4px;
+    transform: translateZ(6px);
+    border: 1px solid rgba(238,228,209,.08);
+  }
+
+  .learning-wheel-depth::after {
+    inset: 9px;
+    transform: translateZ(12px);
+    border: 1px solid rgba(0,0,0,.38);
+  }
+
+  .learning-wheel-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transform: translateZ(1px);
+  }
+
+  .wheel-segment {
+    fill: rgba(238,228,209,.055);
+    stroke: rgba(238,228,209,.17);
+    stroke-width: 1;
+    transition: fill 220ms ease, stroke 220ms ease, opacity 220ms ease;
+  }
+
+  .wheel-segment.is-active {
+    fill: url("#learningWheelPaper");
+    stroke: #d59a72;
+    stroke-width: 1.7;
+  }
+
+  .learning-wheel-object.is-resolved .wheel-segment {
+    fill: rgba(238,228,209,.11);
+    stroke: rgba(238,228,209,.28);
+  }
+
+  .wheel-spoke {
+    fill: none;
+    stroke: rgba(238,228,209,.14);
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    stroke-linecap: round;
+    stroke-width: 1.3;
+    transition: stroke-dashoffset 300ms var(--ease-out), stroke 180ms ease;
+  }
+
+  .wheel-spoke.is-active {
+    stroke: #d59a72;
+    stroke-dashoffset: 0;
+  }
+
+  .wheel-resolution-network {
+    opacity: var(--wheel-resolve, 0);
+  }
+
+  .wheel-resolution-network path {
+    fill: none;
+    stroke: rgba(213,154,114,.65);
+    stroke-dasharray: 1;
+    stroke-dashoffset: calc(1 - var(--wheel-resolve, 0));
+    stroke-linecap: round;
+    stroke-width: 1.2;
+  }
+
+  .wheel-resolution-network circle {
+    fill: var(--paper);
+    opacity: var(--wheel-resolve, 0);
+  }
+
+  .wheel-label {
+    position: absolute;
+    z-index: 5;
+    display: grid;
+    width: 30%;
+    min-width: 66px;
+    min-height: 44px;
+    padding: 0;
+    place-items: center;
+    transform: translate(-50%, -50%) translateZ(10px);
+    border: 0;
+    background: transparent;
+    color: rgba(246,242,233,.5);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: clamp(8px, 2.3vw, 11px);
+    letter-spacing: .08em;
+    line-height: 1.1;
+    text-align: center;
+    text-transform: uppercase;
+    transition: color 180ms ease, opacity 180ms ease;
+  }
+
+  .wheel-label span {
+    display: grid;
+    gap: 3px;
+    transform: rotateZ(var(--wheel-counter, 0deg));
+  }
+
+  .wheel-label small {
+    font-size: 8px;
+    opacity: .58;
+  }
+
+  .wheel-label[aria-pressed="true"] {
+    color: var(--fg);
+  }
+
+  .learning-wheel-object.is-resolved .wheel-label {
+    opacity: .34;
+  }
+
+  .wheel-label-1 { top: 17%; left: 50%; }
+  .wheel-label-2 { top: 50%; left: 83%; }
+  .wheel-label-3 { top: 83%; left: 50%; }
+  .wheel-label-4 { top: 50%; left: 17%; }
+
+  .learning-wheel-hub {
+    position: absolute;
+    z-index: 6;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 31%;
+    aspect-ratio: 1;
+    transform:
+      translate(-50%, -50%)
+      translateZ(22px)
+      rotateZ(var(--wheel-counter, 0deg));
+    place-items: center;
+    border: 1px solid rgba(25,26,23,.17);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 33% 24%, rgba(255,255,255,.72), transparent 31%),
+      var(--paper);
+    box-shadow: 0 10px 20px rgba(0,0,0,.22);
+    color: var(--fg);
+  }
+
+  .wheel-hub-symbol {
+    position: absolute;
+    width: 43%;
+    color: var(--accent);
+    transform: scale(.82);
+    opacity: 0;
+    transition: opacity 150ms ease, transform 260ms var(--ease-out);
+  }
+
+  .wheel-hub-symbol.is-active {
+    transform: scale(1);
+    opacity: calc(1 - var(--wheel-resolve, 0));
+  }
+
+  .wheel-hub-result {
+    position: absolute;
+    color: var(--fg);
+    font-family: var(--font-display);
+    font-size: clamp(12px, 3vw, 18px);
+    line-height: 1;
+    text-align: center;
+    transform: scale(calc(.82 + var(--wheel-resolve, 0) * .18));
+    opacity: var(--wheel-resolve, 0);
+  }
+
+  .learning-wheel-progress {
+    position: absolute;
+    z-index: 7;
+    right: 6px;
+    bottom: 8px;
+    left: 6px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .learning-wheel-progress span {
+    height: 1px;
+    background: rgba(246,242,233,.2);
+    transition: background-color 180ms ease, transform 180ms ease;
+    transform-origin: left;
+  }
+
+  .learning-wheel-progress span.is-active {
+    transform: scaleY(2);
+    background: #d59a72;
   }
 
   .privacy {
@@ -1999,27 +2340,53 @@
       margin-top: 40px;
     }
 
-    .methods-head {
-      padding: 160px 0 70px;
+    .learning-wheel-scroll {
+      height: 320svh;
     }
 
-    .methods-head h2 {
-      font-size: clamp(74px, 6.7vw, 104px);
-    }
-
-    .method {
-      min-height: 55svh;
-      grid-template-columns: 1.2fr .8fr;
+    .learning-wheel-layout {
+      width: min(100% - 64px, 1220px);
+      grid-template-columns: minmax(310px, .82fr) minmax(430px, 1.18fr);
+      grid-template-rows: 1fr;
+      gap: 58px;
+      padding: calc(var(--header-h) + 34px) 0 42px;
       align-items: center;
     }
 
-    .method h3 {
-      font-size: clamp(92px, 9.4vw, 148px);
+    .methods-head {
+      align-self: center;
     }
 
-    .method p {
-      margin: 0;
-      font-size: 21px;
+    .methods-head h2 {
+      max-width: 10ch;
+      font-size: clamp(58px, 6.1vw, 86px);
+    }
+
+    .learning-wheel-copy {
+      --wheel-copy-min: 162px;
+      margin-top: 34px;
+    }
+
+    .wheel-station p,
+    .wheel-resolution strong {
+      font-size: clamp(26px, 2.35vw, 34px);
+    }
+
+    .learning-wheel-stage {
+      width: min(47vw, 620px);
+      margin-top: 0;
+      margin-right: 0;
+      align-self: center;
+    }
+
+    .learning-wheel-progress {
+      right: 9%;
+      bottom: 2%;
+      left: 9%;
+    }
+
+    .wheel-label {
+      font-size: clamp(9px, .85vw, 11px);
     }
 
     .privacy {
@@ -2157,6 +2524,29 @@
     .product-screen {
       opacity: 1;
     }
+
+    .learning-wheel-layout {
+      padding-top: calc(var(--header-h) + 18px);
+      padding-bottom: 16px;
+    }
+
+    .methods-head h2 {
+      font-size: 32px;
+    }
+
+    .learning-wheel-copy {
+      --wheel-copy-min: 128px;
+      margin-top: 13px;
+    }
+
+    .wheel-station p,
+    .wheel-resolution strong {
+      font-size: 18px;
+    }
+
+    .learning-wheel-stage {
+      width: min(70vw, 34svh, 250px);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -2175,14 +2565,16 @@
 
     .hero-scroll,
     .thinking-scroll,
-    .product-scroll {
+    .product-scroll,
+    .learning-wheel-scroll {
       height: auto;
       min-height: 100svh;
     }
 
     .hero-sticky,
     .thinking-sticky,
-    .product-sticky {
+    .product-sticky,
+    .learning-wheel-sticky {
       position: relative;
     }
 
@@ -2224,6 +2616,51 @@
     }
 
     .thought-node {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .learning-wheel-sticky {
+      height: auto;
+      min-height: 0;
+      overflow: visible;
+    }
+
+    .learning-wheel-layout {
+      height: auto;
+      grid-template-rows: auto auto;
+      padding-top: 110px;
+      padding-bottom: 100px;
+    }
+
+    .learning-wheel-copy {
+      display: grid;
+      height: auto;
+      gap: 0;
+    }
+
+    .wheel-station {
+      position: relative;
+      padding: 22px 0;
+      transform: none;
+      border-top: 1px solid rgba(246,242,233,.16);
+      opacity: 1;
+    }
+
+    .wheel-resolution {
+      display: none;
+    }
+
+    .learning-wheel-stage {
+      width: min(82vw, 360px);
+      margin-top: 48px;
+    }
+
+    .learning-wheel-object {
+      transform: rotateX(24deg);
+    }
+
+    .wheel-hub-symbol:first-child {
       transform: scale(1);
       opacity: 1;
     }
@@ -2546,42 +2983,151 @@
   </section>
 
   <section class="methods" aria-labelledby="methodsTitle">
-    <div class="wrap">
-      <div class="methods-head">
-        <p class="eyebrow">Nicht konsumieren. Arbeiten.</p>
-        <h2 id="methodsTitle">Vier Bewegungen, die Wissen zu deinem machen.</h2>
-      </div>
+    <div class="learning-wheel-scroll" id="learningWheel">
+      <div class="learning-wheel-sticky">
+        <div class="learning-wheel-layout">
+          <div class="methods-head">
+            <p class="eyebrow">Nicht konsumieren. Arbeiten.</p>
+            <h2 id="methodsTitle">Vier Bewegungen, die Wissen zu deinem machen.</h2>
 
-      <ol class="method-list">
-        <li class="method">
-          <div class="method-top">
-            <span class="method-number">01</span>
-            <h3>Fragen.</h3>
+            <div class="learning-wheel-copy" aria-live="polite">
+              <article class="wheel-station is-active" data-wheel-station="0" aria-hidden="false">
+                <div class="wheel-station-top">
+                  <span class="wheel-station-number">01</span>
+                  <span class="wheel-station-name">Fragen</span>
+                </div>
+                <p>Eine gute Frage zeigt nicht nur, was fehlt. Sie zeigt, wo du weiterdenken kannst.</p>
+              </article>
+
+              <article class="wheel-station" data-wheel-station="1" aria-hidden="true">
+                <div class="wheel-station-top">
+                  <span class="wheel-station-number">02</span>
+                  <span class="wheel-station-name">Erklären</span>
+                </div>
+                <p>Wenn du etwas in eigenen Worten ausdrücken kannst, wird aus Wiedererkennen langsam Verständnis.</p>
+              </article>
+
+              <article class="wheel-station" data-wheel-station="2" aria-hidden="true">
+                <div class="wheel-station-top">
+                  <span class="wheel-station-number">03</span>
+                  <span class="wheel-station-name">Übertragen</span>
+                </div>
+                <p>Ein Gedanke trägt erst dann, wenn er auch außerhalb seines ursprünglichen Beispiels funktioniert.</p>
+              </article>
+
+              <article class="wheel-station" data-wheel-station="3" aria-hidden="true">
+                <div class="wheel-station-top">
+                  <span class="wheel-station-number">04</span>
+                  <span class="wheel-station-name">Beurteilen</span>
+                </div>
+                <p>Du vergleichst, zweifelst und entscheidest. So entsteht ein Urteil, das wirklich deines ist.</p>
+              </article>
+
+              <div class="wheel-resolution" id="wheelResolution" aria-hidden="true">
+                <small>Was bleibt</small>
+                <strong>Aus vier Bewegungen wird dein eigener Standpunkt.</strong>
+              </div>
+            </div>
           </div>
-          <p>Eine gute Frage zeigt nicht nur, was fehlt. Sie zeigt, wo du weiterdenken kannst.</p>
-        </li>
-        <li class="method">
-          <div class="method-top">
-            <span class="method-number">02</span>
-            <h3>Erklären.</h3>
+
+          <div class="learning-wheel-stage" id="learningWheelStage" role="group" aria-label="Interaktives Lernrad mit vier Lernbewegungen">
+            <div class="learning-wheel-shadow" aria-hidden="true"></div>
+            <div class="learning-wheel-marker" aria-hidden="true"></div>
+
+            <div class="learning-wheel-object" id="learningWheelObject">
+              <div class="learning-wheel-depth" aria-hidden="true"></div>
+
+              <svg class="learning-wheel-face" viewBox="-200 -200 400 400" aria-hidden="true">
+                <defs>
+                  <radialGradient id="learningWheelPlate" cx="34%" cy="24%" r="84%">
+                    <stop offset="0%" stop-color="#3b3b35"/>
+                    <stop offset="58%" stop-color="#272824"/>
+                    <stop offset="100%" stop-color="#171815"/>
+                  </radialGradient>
+                  <linearGradient id="learningWheelPaper" x1="0" y1="0" x2=".5" y2="1">
+                    <stop offset="0%" stop-color="#f4ecdc"/>
+                    <stop offset="100%" stop-color="#d9cbb1"/>
+                  </linearGradient>
+                </defs>
+
+                <circle r="190" fill="url(#learningWheelPlate)" stroke="rgba(238,228,209,.14)" stroke-width="1"/>
+                <circle r="180" fill="none" stroke="rgba(238,228,209,.09)" stroke-width="1"/>
+                <circle r="171" fill="none" stroke="rgba(238,228,209,.14)" stroke-width="1.5" stroke-dasharray="1.4 16"/>
+
+                <g>
+                  <path class="wheel-segment is-active" data-wheel-segment="0" d="M-150.7-105.5A184 184 0 0 1 150.7-105.5L98.3-68.8A120 120 0 0 0-98.3-68.8Z"/>
+                  <path class="wheel-segment" data-wheel-segment="1" transform="rotate(90)" d="M-150.7-105.5A184 184 0 0 1 150.7-105.5L98.3-68.8A120 120 0 0 0-98.3-68.8Z"/>
+                  <path class="wheel-segment" data-wheel-segment="2" transform="rotate(180)" d="M-150.7-105.5A184 184 0 0 1 150.7-105.5L98.3-68.8A120 120 0 0 0-98.3-68.8Z"/>
+                  <path class="wheel-segment" data-wheel-segment="3" transform="rotate(270)" d="M-150.7-105.5A184 184 0 0 1 150.7-105.5L98.3-68.8A120 120 0 0 0-98.3-68.8Z"/>
+                </g>
+
+                <g>
+                  <path class="wheel-spoke is-active" data-wheel-spoke="0" pathLength="1" d="M0-65V-119"/>
+                  <path class="wheel-spoke" data-wheel-spoke="1" pathLength="1" transform="rotate(90)" d="M0-65V-119"/>
+                  <path class="wheel-spoke" data-wheel-spoke="2" pathLength="1" transform="rotate(180)" d="M0-65V-119"/>
+                  <path class="wheel-spoke" data-wheel-spoke="3" pathLength="1" transform="rotate(270)" d="M0-65V-119"/>
+                </g>
+
+                <g class="wheel-resolution-network">
+                  <path pathLength="1" d="M0-119L82-82L119 0L82 82L0 119L-82 82L-119 0L-82-82Z"/>
+                  <path pathLength="1" d="M0-65L82-82M65 0L82 82M0 65L-82 82M-65 0L-82-82"/>
+                  <circle cx="0" cy="-119" r="3"/>
+                  <circle cx="82" cy="-82" r="2.5"/>
+                  <circle cx="119" cy="0" r="3"/>
+                  <circle cx="82" cy="82" r="2.5"/>
+                  <circle cx="0" cy="119" r="3"/>
+                  <circle cx="-82" cy="82" r="2.5"/>
+                  <circle cx="-119" cy="0" r="3"/>
+                  <circle cx="-82" cy="-82" r="2.5"/>
+                </g>
+
+                <circle r="67" fill="none" stroke="rgba(213,154,114,.32)" stroke-width="1"/>
+                <circle r="61" fill="url(#learningWheelPaper)" stroke="rgba(25,26,23,.2)" stroke-width="1"/>
+              </svg>
+
+              <button class="wheel-label wheel-label-1" type="button" data-wheel-index="0" aria-pressed="true">
+                <span><small>01</small>Fragen</span>
+              </button>
+              <button class="wheel-label wheel-label-2" type="button" data-wheel-index="1" aria-pressed="false">
+                <span><small>02</small>Erklären</span>
+              </button>
+              <button class="wheel-label wheel-label-3" type="button" data-wheel-index="2" aria-pressed="false">
+                <span><small>03</small>Übertragen</span>
+              </button>
+              <button class="wheel-label wheel-label-4" type="button" data-wheel-index="3" aria-pressed="false">
+                <span><small>04</small>Beurteilen</span>
+              </button>
+
+              <div class="learning-wheel-hub" aria-hidden="true">
+                <svg class="wheel-hub-symbol is-active" data-wheel-symbol="0" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                  <path d="M16 18a8 8 0 1 1 10 7.7c-2.1.7-3.2 2.2-3.2 4.3"/>
+                  <path d="M22.8 36h.1"/>
+                </svg>
+                <svg class="wheel-hub-symbol" data-wheel-symbol="1" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                  <path d="M12 14h24M12 22h19M12 30h22M12 38h13"/>
+                </svg>
+                <svg class="wheel-hub-symbol" data-wheel-symbol="2" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 32c8-1 11-8 14-16"/>
+                  <path d="m20 17 6-3 2 6"/>
+                  <path d="M28 33h9M33 28l5 5-5 5"/>
+                </svg>
+                <svg class="wheel-hub-symbol" data-wheel-symbol="3" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 25l8 8 16-18"/>
+                  <path d="M12 13h13"/>
+                </svg>
+                <span class="wheel-hub-result">Eigenes<br>Urteil</span>
+              </div>
+            </div>
+
+            <div class="learning-wheel-progress" aria-hidden="true">
+              <span class="is-active"></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
-          <p>Wenn du etwas in eigenen Worten ausdrücken kannst, wird aus Wiedererkennen langsam Verständnis.</p>
-        </li>
-        <li class="method">
-          <div class="method-top">
-            <span class="method-number">03</span>
-            <h3>Übertragen.</h3>
-          </div>
-          <p>Ein Gedanke trägt erst dann, wenn er auch außerhalb seines ursprünglichen Beispiels funktioniert.</p>
-        </li>
-        <li class="method">
-          <div class="method-top">
-            <span class="method-number">04</span>
-            <h3>Beurteilen.</h3>
-          </div>
-          <p>Du vergleichst, zweifelst und entscheidest. So entsteht ein Urteil, das wirklich deines ist.</p>
-        </li>
-      </ol>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2847,6 +3393,172 @@
     });
 
     const clamp = (value, min = 0, max = 1) => Math.max(min, Math.min(max, value));
+    const easeInOut = (value) => value < .5
+      ? 4 * value * value * value
+      : 1 - Math.pow(-2 * value + 2, 3) / 2;
+
+    const learningWheel = document.getElementById("learningWheel");
+    const learningWheelObject = document.getElementById("learningWheelObject");
+    const wheelStations = [...learningWheel.querySelectorAll("[data-wheel-station]")];
+    const wheelLabels = [...learningWheel.querySelectorAll("[data-wheel-index]")];
+    const wheelSegments = [...learningWheel.querySelectorAll("[data-wheel-segment]")];
+    const wheelSpokes = [...learningWheel.querySelectorAll("[data-wheel-spoke]")];
+    const wheelSymbols = [...learningWheel.querySelectorAll("[data-wheel-symbol]")];
+    const wheelProgressItems = [...learningWheel.querySelectorAll(".learning-wheel-progress span")];
+    const wheelResolution = document.getElementById("wheelResolution");
+    const learningWheelCopy = learningWheel.querySelector(".learning-wheel-copy");
+    let currentWheelIndex = -1;
+    let learningWheelProgress = 0;
+    let wheelMeasureFrame = 0;
+
+    const measureLearningWheelCopy = () => {
+      wheelMeasureFrame = 0;
+      const contentHeight = Math.max(
+        ...wheelStations.map((station) => station.scrollHeight),
+        wheelResolution.scrollHeight
+      );
+      learningWheelCopy.style.setProperty("--wheel-copy-height", `${Math.ceil(contentHeight + 4)}px`);
+    };
+
+    const requestLearningWheelCopyMeasure = () => {
+      if (wheelMeasureFrame) return;
+      wheelMeasureFrame = window.requestAnimationFrame(measureLearningWheelCopy);
+    };
+
+    requestLearningWheelCopyMeasure();
+    document.fonts?.ready.then(requestLearningWheelCopyMeasure);
+    window.addEventListener("resize", requestLearningWheelCopyMeasure, { passive: true });
+
+    const setLearningWheelStage = (index, resolved = false) => {
+      if (index !== currentWheelIndex) {
+        currentWheelIndex = index;
+        wheelStations.forEach((station, stationIndex) => {
+          const isActive = stationIndex === index;
+          station.classList.toggle("is-active", isActive);
+          station.setAttribute("aria-hidden", String(!isActive));
+        });
+        wheelLabels.forEach((label, labelIndex) => {
+          label.setAttribute("aria-pressed", String(labelIndex === index));
+        });
+        wheelSegments.forEach((segment, segmentIndex) => {
+          segment.classList.toggle("is-active", segmentIndex === index);
+        });
+        wheelSpokes.forEach((spoke, spokeIndex) => {
+          spoke.classList.toggle("is-active", spokeIndex === index);
+        });
+        wheelSymbols.forEach((symbol, symbolIndex) => {
+          symbol.classList.toggle("is-active", symbolIndex === index);
+        });
+        wheelProgressItems.forEach((item, itemIndex) => {
+          item.classList.toggle("is-active", itemIndex === index);
+        });
+      }
+
+      wheelStations.forEach((station, stationIndex) => {
+        station.setAttribute("aria-hidden", String(resolved || stationIndex !== index));
+      });
+      wheelResolution.setAttribute("aria-hidden", String(!resolved));
+    };
+
+    const getWheelPosition = (progress) => {
+      const rawPosition = clamp((progress - .12) / .66) * 3;
+      const base = Math.min(3, Math.floor(rawPosition));
+      const local = rawPosition - base;
+      const movement = local < .58 ? 0 : easeInOut(clamp((local - .58) / .42));
+      return Math.min(3, base + (base < 3 ? movement : 0));
+    };
+
+    const updateLearningWheel = (progress) => {
+      learningWheelProgress = progress;
+      const entrance = easeInOut(clamp(progress / .13));
+      const resolution = easeInOut(clamp((progress - .84) / .13));
+      const position = getWheelPosition(progress);
+      const activeIndex = Math.min(3, Math.round(position));
+      const rotation = position * -90;
+      const tilt = 64 - entrance * 38 - resolution * 17;
+      const scale = .76 + entrance * .24 - resolution * .08;
+      const lift = 28 - entrance * 34 + resolution * 13;
+
+      learningWheel.style.setProperty("--wheel-entrance", entrance.toFixed(4));
+      learningWheel.style.setProperty("--wheel-rotation", `${rotation.toFixed(3)}deg`);
+      learningWheel.style.setProperty("--wheel-counter", `${(-rotation).toFixed(3)}deg`);
+      learningWheel.style.setProperty("--wheel-tilt", `${tilt.toFixed(3)}deg`);
+      learningWheel.style.setProperty("--wheel-scale", scale.toFixed(4));
+      learningWheel.style.setProperty("--wheel-lift", `${lift.toFixed(3)}px`);
+      learningWheel.style.setProperty("--wheel-resolve", resolution.toFixed(4));
+      learningWheel.style.setProperty("--wheel-copy-opacity", (1 - resolution).toFixed(4));
+      learningWheelObject.classList.toggle("is-resolved", resolution > .08);
+      setLearningWheelStage(activeIndex, resolution > .52);
+    };
+
+    const scrollToWheelStage = (index) => {
+      if (reducedMotion) {
+        setLearningWheelStage(index);
+        return;
+      }
+      const rect = learningWheel.getBoundingClientRect();
+      const travel = Math.max(1, learningWheel.offsetHeight - window.innerHeight);
+      const progress = .12 + (index / 3) * .66;
+      const top = window.scrollY + rect.top + progress * travel;
+      window.scrollTo({ top, behavior: "smooth" });
+    };
+
+    wheelLabels.forEach((label) => {
+      label.addEventListener("click", () => {
+        scrollToWheelStage(Number(label.dataset.wheelIndex));
+      });
+    });
+
+    let wheelPointer = null;
+
+    learningWheelObject.addEventListener("pointerdown", (event) => {
+      if (reducedMotion || event.button !== 0 || event.target.closest(".wheel-label")) return;
+      const position = getWheelPosition(learningWheelProgress);
+      wheelPointer = {
+        id: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        startIndex: Math.round(position),
+        startRotation: position * -90,
+        dragging: false
+      };
+      learningWheelObject.setPointerCapture?.(event.pointerId);
+    });
+
+    learningWheelObject.addEventListener("pointermove", (event) => {
+      if (!wheelPointer || wheelPointer.id !== event.pointerId) return;
+      const deltaX = event.clientX - wheelPointer.startX;
+      const deltaY = event.clientY - wheelPointer.startY;
+      if (!wheelPointer.dragging && Math.abs(deltaX) > 9 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        wheelPointer.dragging = true;
+        learningWheelObject.classList.add("is-dragging");
+      }
+      if (!wheelPointer.dragging) return;
+      event.preventDefault();
+      const rotation = wheelPointer.startRotation + deltaX * .22;
+      learningWheel.style.setProperty("--wheel-rotation", `${rotation.toFixed(3)}deg`);
+      learningWheel.style.setProperty("--wheel-counter", `${(-rotation).toFixed(3)}deg`);
+    });
+
+    const finishWheelDrag = (event) => {
+      if (!wheelPointer || wheelPointer.id !== event.pointerId) return;
+      const deltaX = event.clientX - wheelPointer.startX;
+      const wasDragging = wheelPointer.dragging;
+      const startIndex = wheelPointer.startIndex;
+      learningWheelObject.classList.remove("is-dragging");
+      learningWheelObject.releasePointerCapture?.(event.pointerId);
+      wheelPointer = null;
+
+      if (wasDragging && Math.abs(deltaX) > 34) {
+        scrollToWheelStage(clamp(startIndex + (deltaX < 0 ? 1 : -1), 0, 3));
+      } else {
+        updateLearningWheel(learningWheelProgress);
+      }
+    };
+
+    learningWheelObject.addEventListener("pointerup", finishWheelDrag);
+    learningWheelObject.addEventListener("pointercancel", finishWheelDrag);
+
     const scrollScenes = [
       {
         element: document.querySelector(".hero-scroll"),
@@ -2865,6 +3577,11 @@
       {
         element: document.querySelector(".product-scroll"),
         property: "--product-progress"
+      },
+      {
+        element: learningWheel,
+        property: "--wheel-progress",
+        onProgress: updateLearningWheel
       }
     ].filter((scene) => scene.element);
 
@@ -2905,7 +3622,7 @@
         }, { threshold: .22 })
       : null;
 
-    document.querySelectorAll(".method, .knowledge-stage").forEach((element) => {
+    document.querySelectorAll(".knowledge-stage").forEach((element) => {
       if (revealObserver) revealObserver.observe(element);
       else element.classList.add("is-visible");
     });
